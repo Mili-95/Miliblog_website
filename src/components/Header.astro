@@ -1,0 +1,28 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+import Logo from '../icons/logo';
+
+
+---
+
+<header>
+	<nav class="bg-white shadow-black flex h-[59px]">
+		<div class="pl-[50px] pt-[1rem] " >
+				<Logo class="cursor:pointer" href="/"/>	
+			</div>
+		<h2 ><a class="pl-[58px] pt-[15px]" href="">
+			
+		</a></h2>
+		<div class="internal-links  pl-[36rem] pt-[15px]">
+			<HeaderLink class=""  href="/">Home</HeaderLink>
+			<HeaderLink class="pl-[17px] " href="/blog">Blog</HeaderLink>
+			<HeaderLink class="pl-[17px]" href="/about">About</HeaderLink>
+		</div>
+	
+	
+		
+	
+	</nav>
+	
+</header>

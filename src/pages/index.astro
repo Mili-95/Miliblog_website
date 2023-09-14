@@ -1,0 +1,54 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import MainLayout from '../layouts/MainLayout.astro';
+import PostCard from "../components/PostCard.astro";
+
+
+//
+import {formatBlogPosts} from "../js/utils";
+const allPosts = await Astro.glob("./blog/*.md");
+const formattedPosts = formatBlogPosts(allPosts, {
+	limit: 3,
+})
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	
+	<body>
+		
+		<MainLayout title="Mili Murmu">
+			<section  class="flex">
+				<div class="w-[340px] pt-[40px]">
+					<h1 class="text-3xl font-bold">My Blog</h1>
+					<p class="w-[240px] pt-[15px]" >Programming is usually taught by examples</p>
+				</div>
+				<div class="max-w-2xl ">
+				<img class="" src="./public/banner.png"  />
+				</div>
+				
+			</section>
+			<section aria-label="New Blog Posts " class="pb-[4rem] text-[20px] uppercase">
+				<h2 class="pb-[5rem] text-center text-[20px]">New Blog Posts</h2>	
+
+			</section>
+			 <div class="post-container grid grid-cols-2 gap-[5rem]">
+      {
+        formattedPosts.map((post) => (
+          <PostCard
+		  class="w-[10rem]"
+            frontmatter={post.frontmatter}
+            url={post.url}
+            tagType="h3"
+          />
+        ))
+      }
+    </div>
+			
+		</MainLayout>
+		
+	</body>
+</html>
